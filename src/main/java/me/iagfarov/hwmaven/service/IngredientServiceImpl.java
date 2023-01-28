@@ -12,14 +12,9 @@ public class IngredientServiceImpl implements IngredientService {
     private static Integer id = 0;
 
     @Override
-    public Ingredient addIngrediant(Ingredient ingredient) {
+    public Ingredient addIngredient(Ingredient ingredient) {
         ingredientMap.put(id++, ingredient);
         return ingredient;
-    }
-
-    @Override
-    public Ingredient addIngredient(Ingredient ingredient) {
-        return null;
     }
 
     @Override
