@@ -34,7 +34,8 @@ public class IngredientServiceImpl implements IngredientService {
 
     @Override
     public Ingredient updateIngredient(int id, Ingredient ingredient) {
-        return null;
+        ingredientMap.put(id, ingredient);
+        return ingredient;
     }
 }
 
