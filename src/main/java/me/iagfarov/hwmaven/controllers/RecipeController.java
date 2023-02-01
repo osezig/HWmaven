@@ -1,5 +1,9 @@
 package me.iagfarov.hwmaven.controllers;
 
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import io.swagger.v3.oas.annotations.responses.ApiResponses;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
 import me.iagfarov.hwmaven.model.Recipe;
 import me.iagfarov.hwmaven.service.RecipeService;
@@ -12,6 +16,8 @@ import java.util.Collection;
 @RestController
 @RequestMapping("/recipe")
 @RequiredArgsConstructor
+@Tag(name = "Констроллер рецептов", description = "CRUD-опреции для работы с рецептами")
+
 public class RecipeController {
     private final RecipeService recipeService;
 
@@ -19,6 +25,17 @@ public class RecipeController {
     ResponseEntity<Recipe> getRecipe(@PathVariable Integer id) {
         return ResponseEntity.ok(recipeService.getRecipe(id));
     }
+
+    @Operation(
+            summary = "Добавление рецепта в мапу",
+            description = "Необходимо передать с помощью JSON объект рецепта"
+    )
+    @ApiResponses(value = {
+            @ApiResponse(
+                    responseCode = "200",
+                    description = "Рецепт добавлен"
+            )
+    })
 
     @PostMapping
     ResponseEntity<Recipe> addRecipe(@Valid @RequestBody Recipe recipe) {
