@@ -22,10 +22,21 @@ public class RecipeController {
     private final RecipeService recipeService;
 
     @GetMapping("/{id}")
+    @Operation(
+            summary = "Получение рецепта из списка",
+            description = "Поиск рецепта по id"
+    )
+    @ApiResponses(value = {
+            @ApiResponse(
+                    responseCode = "200",
+                    description = "Рецепт получен"
+            )
+    })
     ResponseEntity<Recipe> getRecipe(@PathVariable Integer id) {
         return ResponseEntity.ok(recipeService.getRecipe(id));
     }
 
+    @PostMapping
     @Operation(
             summary = "Добавление рецепта в мапу",
             description = "Необходимо передать с помощью JSON объект рецепта"
@@ -36,23 +47,48 @@ public class RecipeController {
                     description = "Рецепт добавлен"
             )
     })
-
-    @PostMapping
     ResponseEntity<Recipe> addRecipe(@Valid @RequestBody Recipe recipe) {
         return ResponseEntity.ok(recipeService.addRecipe(recipe));
     }
 
     @GetMapping("/all")
-    ResponseEntity<Collection<Recipe>> getResipes() {
+    @Operation(
+            summary = "Получение всех рецептов"
+    )
+    @ApiResponses(value = {
+            @ApiResponse(
+                    responseCode = "200",
+                    description = "Рецепты получены"
+            )
+    })
+    ResponseEntity<Collection<Recipe>> getRecipes() {
         return ResponseEntity.ok(recipeService.getAll());
     }
 
     @PutMapping("/{id}")
+    @Operation(
+            summary = "Изменение рецепта по id"
+    )
+    @ApiResponses(value = {
+            @ApiResponse(
+                    responseCode = "200",
+                    description = "Рецепт изменен"
+            )
+    })
     ResponseEntity<Recipe> updateRecipe(@PathVariable Integer id, @Valid @RequestBody Recipe recipe) {
         return ResponseEntity.ok(recipeService.updateRecipe(id, recipe));
     }
 
     @DeleteMapping("/{id}")
+    @Operation(
+            summary = "Удаление рецепта по id"
+    )
+    @ApiResponses(value = {
+            @ApiResponse(
+                    responseCode = "200",
+                    description = "Рецепт удален"
+            )
+    })
     ResponseEntity<Recipe> removeRecipe(@PathVariable Integer id) {
         return ResponseEntity.ok(recipeService.removeRecipe(id));
     }

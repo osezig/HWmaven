@@ -12,7 +12,7 @@ import javax.validation.constraints.Positive;
 @Data
 @EqualsAndHashCode
 public class Ingredient {
-    @NotBlank
+    @NotBlank(message = "Name is mandatory")
     private String name;
 
     @Positive
