@@ -16,7 +16,7 @@ import java.util.Collection;
 @RestController
 @RequestMapping("/recipe")
 @RequiredArgsConstructor
-@Tag(name = "Констроллер рецептов", description = "CRUD-опреции для работы с рецептами")
+@Tag(name = "Контроллер рецептов", description = "CRUD-опреции для работы с рецептами")
 
 public class RecipeController {
     private final RecipeService recipeService;

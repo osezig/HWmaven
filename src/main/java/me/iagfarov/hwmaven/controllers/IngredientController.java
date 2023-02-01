@@ -18,7 +18,7 @@ import java.util.Collection;
 @RestController
 @RequestMapping("/ingredient")
 @RequiredArgsConstructor
-@Tag(name = "Констроллер ингредиентов", description = "CRUD-опреции для работы с ингредиентами")
+@Tag(name = "Контроллер ингредиентов", description = "CRUD-опреции для работы с ингредиентами")
 public class IngredientController {
     private final IngredientService ingredientService;
 
