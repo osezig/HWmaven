@@ -1,0 +1,12 @@
+{"0":{"name":"Творог",
+  "quantity":350,
+  "measure":"г"},
+  "1":{"name":"Куриное яйцо",
+    "quantity":2,
+    "measure":"шт"},
+  "2":{"name":"Пшеничная мука",
+    "quantity":6,
+    "measure":"ст.л."},
+  "3":{"name":"Сахар",
+    "quantity":2,
+    "measure":"ст.л."}}
