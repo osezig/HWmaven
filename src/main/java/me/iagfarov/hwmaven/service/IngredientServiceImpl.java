@@ -34,7 +34,6 @@ public class IngredientServiceImpl implements IngredientService {
     }
     @Override
     public Ingredient getIngredient(Integer id) {
-        saveIngredientFile();
         return ingredientMap.get(id);
 
     }
@@ -52,6 +51,7 @@ public class IngredientServiceImpl implements IngredientService {
 
     @Override
     public Ingredient updateIngredient(int id, Ingredient ingredient) {
+        saveIngredientFile();
         ingredientMap.put(id, ingredient);
         return ingredient;
 

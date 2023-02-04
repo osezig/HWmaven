@@ -15,6 +15,7 @@ import java.util.Map;
 @Service
 @RequiredArgsConstructor
 public class RecipeServiceImpl implements RecipeService {
+
     final private FileService fileService;
 
     @Value("${name.of.file.one}")
@@ -32,18 +33,15 @@ public class RecipeServiceImpl implements RecipeService {
 
     @Override
     public Recipe getRecipe(Integer id) {
-        saveToRecipeFile();
         return recipeMap.get(id);
     }
     @Override
     public Collection<Recipe> getAll() {
-        saveToRecipeFile();
         return recipeMap.values();
     }
 
     @Override
     public Recipe removeRecipe(int id) {
-        saveToRecipeFile();
         return recipeMap.remove(id);
     }
 

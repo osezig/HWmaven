@@ -12,14 +12,13 @@ public class FileServiceImpl implements FileService {
         private String dataFilePath;
 
         @Override
-        public boolean saveToFile(String json, String fileName) {
+        public void saveToFile(String json, String fileName) {
             try {
-                cleanRecipeFile(fileName);
+                cleanFile(fileName);
                 Files.writeString(Path.of(dataFilePath, fileName), json);
-                return true;
             } catch (IOException e) {
                 e.printStackTrace();
-                return false;
+                throw new RuntimeException();
             }
         }
         @Override
@@ -32,7 +31,9 @@ public class FileServiceImpl implements FileService {
             }
         }
 
-        private boolean cleanRecipeFile(String fileName) {
+
+
+    public boolean cleanFile(String fileName) {
             try {
                 Path path = Path.of(dataFilePath, fileName);
                 Files.deleteIfExists(path);

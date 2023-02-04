@@ -2,8 +2,11 @@ package me.iagfarov.hwmaven.service;
 
 public interface FileService {
 
-    boolean saveToFile(String json, String fileName);
+    void saveToFile(String json, String fileName);
 
     String readFile(String fileName);
+
+    boolean cleanFile(String fileName);
+
 }
 
