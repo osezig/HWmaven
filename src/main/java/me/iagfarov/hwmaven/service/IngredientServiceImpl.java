@@ -15,7 +15,7 @@ public class IngredientServiceImpl implements IngredientService {
     private Map<Integer, Ingredient> ingredientMap = new HashMap<>();
     private static Integer id = 0;
 
-    @Value("${name.of.file.two}")
+    @Value("${name.of.ingredient.file}")
     private String ingredientFileName;
 
     final private FileService fileService;
