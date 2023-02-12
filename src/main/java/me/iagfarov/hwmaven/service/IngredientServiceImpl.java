@@ -6,6 +6,9 @@ import me.iagfarov.hwmaven.model.Ingredient;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import javax.annotation.PostConstruct;
+import java.io.FileNotFoundException;
+import java.nio.file.Files;
+import java.nio.file.Path;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
@@ -65,12 +68,17 @@ public class IngredientServiceImpl implements IngredientService {
         }
     }
     private void readFromFile() {
-        String json = fileService.readFile(ingredientFileName);
+
         try {
-            ingredientMap = new ObjectMapper().readValue
-                    (json, new TypeReference<HashMap<Integer, Ingredient>>() {
-            });
-        } catch (JsonProcessingException e) {
+            if (Files.exists(Path.of(ingredientFileName))) {
+
+                String json = fileService.readFile(ingredientFileName);
+                ingredientMap = new ObjectMapper().readValue(json, new TypeReference<HashMap<Integer, Ingredient>>() {
+                });
+            } else {
+                throw new FileNotFoundException();
+            }
+        } catch (JsonProcessingException | FileNotFoundException e) {
             e.printStackTrace();
         }
     }
